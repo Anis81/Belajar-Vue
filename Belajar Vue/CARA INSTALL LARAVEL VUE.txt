@@ -1,0 +1,18 @@
+CARA INSTALASI PROJECT DGN LARAVEL VUE
+
+*nyalakan XAMPP MYSQL APACHE*
+XAMPP= kumpulan php, server DB
+rdbms= mysql, postgresql(yg dipake)
+sever = APACHE, nginx (yg dipake)
+
+1. Buka folder project di VSC
+2. Instal laravel dengan menuliskan di terminal
+	composer create-project --prefer-dist laravel/laravel NAMA_PROJECT
+3. Instal UI Laravel pada folder NAMA_PROJECT dengan menuliskan
+	composer require laravel/ui
+4. Instal vue js di laravel dengan menuliskan
+	php artisan ui vue
+5. Instal node js di laravel
+	npm install
+
+

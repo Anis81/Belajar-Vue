@@ -1,0 +1,49 @@
+<!--
+    conditional = percabangan
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Directive Conditional Rendering</title>
+</head>
+    <body>
+        <!--KONTAINER-->
+        <div id="app">
+            <div class="order-detail">
+                <p>Ini adalah detil dari pesanan Anda: </p>
+                <hr>
+                <img src="cover" width="100">
+                <h4>{{ name }}</h4>
+                Qty: <input type="number" v-model:value="qty" min="1" max="10">
+                Total: Rp {{ price * qty }}
+            </div>
+            <hr>
+            <label for=""> 
+                <input type="checkbox" v-model:value="showBonus"> Show Bonus
+            </label>
+            <div class="detail" v-if="showBonus">
+                <p v-if="qty>=10"> Maaf kamu hanya boleh membeli {{ qty }}</p>
+                <p v-else-if="qty >= 5"> Wah tukang borong nih</p>
+                <p v-else-if="qty >= 2">Selamat kamu dapat bonus karena membeli {{ qty }}</p>
+                <p v-else>Beli lebih banyak lagi untuk dapat bonus</p>
+            </div>
+        </div>
+        <!--VUE-->
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data: {
+                    showBonus: true,
+                    name: "Buku Vuejs Pemula",
+                    cover: "https://www.petanikode.com/img/buku/vuejs.png",
+                    price: 140000,
+                    qty: 1
+                }
+            })
+        </script>
+    </body>
+</html>

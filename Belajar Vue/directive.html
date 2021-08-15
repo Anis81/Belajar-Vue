@@ -1,0 +1,93 @@
+<!--  Directive
+sumber : https://www.petanikode.com/vuejs-directive/#!
+atribut khusus yang diawali dengan v-
+berfungsi untuk menjalankan perintah atau ekspresi js dalam atribut
+contoh <a v-bind:href="url"> ... </a>
+dengan v-bind adalah direktif, href adalah argumen dan url adalah ekspresi
+misal:
+<p v-if="seen" Now you see me</p> -> directive v-if digunakan untuk rendering secara kondisional
+bila seen bernilai true maka elemen<p> akan di render atau ditampilkan
+1. Argumen utk Direktif
+    ditulis dengan menggunakan titik dua
+    <a v-bind:href="url"> ... </a>
+    artinya direktif untuk melakukan binding data pada atribut href dgn var url
+    
+    <img v-bind:[attrName]="value" />
+    Argumen yang diberikan kepada direktif v-bind akan mengikuti nilai dari attrName.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Direktive</title>
+</head>
+<body>
+    <!-- elemen kontainer untuk aplikasi-->
+    <div id="app">
+        <div>
+            <input type="url" v-model:value="url" placeholder="Link Gambar"/></br>
+            <input type="text" v-model:value="caption.text" placeholder="Caption untuk image">
+            <br />
+            Berikan caption pada atribut:
+            <select v-model:value="caption.attr">
+                <option>title</option>
+                <option>alt</option>
+                <option>sum</option>
+            </select>
+        </div>
+        <!-- menggunakan argumen statis dan dinamis-->
+        <img v-bind:src="url" v-bind:[caption.attr]="caption.text">
+        <p>Caption diberikan pada atribut 
+            <code>{{ caption.attr }}</code>
+            dengan isi "{{caption.attr}}"
+        </p>
+    </div>
+
+    <!--Aplikasi vue-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data: {
+                url: "https://www.petanikode.com/img/logo.svg",
+                caption: {
+                    attr: "title",
+                    text: "Hello ini adalah caption"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+<!--Modifier untuk Direktif
+    - modifier adalah fungsi tambahan yg akan dieksekusi saat menggunakan direktif
+    - dapat diberikan setelah argumen dengan tanda titik, dan diikuti nama modifiernya
+    - misal: <form v-on:submit.prevent="onSubmit">...</form>
+        di atas menggunakan modifier prevent untuk direktif v-on.
+        prevent untuk memanggil fungsi event.preventDefault()
+
+-->
+
+<!--Shorthand untuk Directif
+    - yaitu directif yg sering digunakan seperti v-bind v-on
+    - misal untuk direktif v-on
+        tanpa singkatan:
+        <a v-on:click="doSomething"> ... </a>
+
+        dengan shorthand:
+        <a @click="doSomething"> ...</a>
+
+        shorhand untuk argumen dinamis (2.6.0+)
+        <a @[event]="doSomething"> ... </a>
+-->
+
+
+<!--Direktif yg harus diingat
+    - Direktif Data Binding: v-bind, v-model, v-html, v-text, dll.
+    - Direktif Conditional Rendering: v-if, v-else, v-else-if
+    - Direktif Perulangan: v-for
+    - Direktif Event: v-on
+-->

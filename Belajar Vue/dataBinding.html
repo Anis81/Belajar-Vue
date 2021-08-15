@@ -1,0 +1,42 @@
+<!--CATATAN-->
+<!--
+    sumber : https://www.petanikode.com/vuejs-untuk-pemula/
+    {{}} = Bersifat reaktif
+    Jika isi variabel berubah.. maka Vue akan melakukan render ulang.
+    dapat dicek dengan menulis pada console:
+    app.message = "pesan baru"
+-->
+
+<!--DATA BINDING-->
+<!--
+    Data binding = cara untuk mengikat data HTML dengan javascript
+    * one way binding = satu arah -> Binding satu arah artinya, binding yang dilakukan hanya dalam satu arah saja (dari Javascript ke HTML).
+    * two way binding = dua arah
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Coba VueJs Data Binding</title>
+</head>
+<body>
+    <!-- elemen kontainer untuk aplikasi-->
+    <div id="app">
+        <input type="text" v-bind:value="message">
+        <P>{{ message }}</P>
+    </div>
+
+    <!--Aplikasi vue Hello-->
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World!"
+            }
+        })
+    </script>
+</body>
+</html>

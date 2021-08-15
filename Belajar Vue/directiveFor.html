@@ -1,0 +1,47 @@
+<!--Directive untuk perulangan
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Directive For</title>
+</head>
+    <body>
+    <!--KONTAINER-->
+    <div id="app">
+        <h2>Daftar Pekerjaan</h2>
+        <input type="text"  placeholder="tambah pekerjaan" v-model:value="newTask">
+        <button @click="addTask">Add</button>
+        <ul>
+            <li v-for="item in todolist">
+                <s v-if ="item.done"> {{ item.task }}</s>
+                <b v-else>{{ item.task }}</b>
+            </li>
+        </ul>
+    </div>
+    <!--VUE-->
+    <script>
+        var app = new Vue ({
+            el:"#app",
+            data: {
+                newTask: "",
+                todolist: [
+                    {'done': true, task: "Belajar Vuejs di Petani Kode"},
+                    {'done': false, task: "Siram tanaman di kebun"},
+                    {'done': false, task: "Beli bibit kopi"},
+                ]
+            },
+            methods: { //
+                addTask: function() {
+                    this.todolist.push({'done': false, 'task': this.newTask})
+                    this.newTask= "";
+                }
+            }
+        })
+    </script>
+    
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!--Directive Event
+    Direktif ini digunakan untuk menangani event, misalnya saat sesuatu diklik, disentuh, di-scroll, dll.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--Menyisipkan vue js dari CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>Directive Event</title>
+    </head>
+        <body>
+            <!--KONTAINER-->
+            <div id="app">
+                <input type="text" v-model:value="name">
+                <button @click="btnClick" @mouseover="hover = true" @mouseout="hover = false">Klik Saya</button>
+                <p v-if="hover">Kamu sedang menyentuh tombolnya</p>
+            </div>
+            <script>
+                var app = new Vue ({
+                    el: "#app",
+                    data: {
+                        name: "Anis",
+                        hover: false,
+                    },
+                    methods: {
+                        btnClick: function() {
+                            alert(`Hi ${this.name}, Kamu sudah mengklik tombolnya`);
+                        }
+                    }
+                })
+            </script>
+        </body>
+</html>
+

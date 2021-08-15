@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Binding 2 arah</title>
+</head>
+<body>
+    <!-- elemen kontainer untuk aplikasi-->
+    <div id="app">
+        <input type="text" v-model:value="message">
+        <P>{{ message }}</P>
+    </div>
+
+    <!--Aplikasi vue Hello-->
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World!"
+            }
+        })
+    </script>
+</body>
+</html>

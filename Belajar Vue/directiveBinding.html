@@ -1,0 +1,62 @@
+<!--Direktif data Binding
+    berfungsi untuk membinding data ke html
+    contoh :
+        - v-bind untuk binding data satu arah
+        - v-model untuk binding data dua arah
+        - v-html menampilkan data HTML
+        - v-text untuk menampilkan data HTML
+        - v-once menampilkan data satu kali (tidak di render ulang meski data berubah)
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Menyisipkan vue js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Direktive</title>
+    <style>
+        .preview {
+            padding: 10px;
+            background-color: azure;
+        }
+    </style>
+</head>
+    <body>
+        <!--KONTAINER-->
+        <div id="app">
+            <fieldset> <!--utk mengelompokkan beberapa objek form dalam sebuah kelompok-->
+                <legend>Buat Artikel</legend> <!--menampilkan judul dari kelompok objek form tsb-->
+                <p><input type="text" v-model:value="title" placeholder="judul artikel" ></p>
+                <p>
+                    <textarea v-model:value="content"></textarea>
+                </p>
+            </fieldset>
+        <div class="preview">
+            <h1 v-text="title"></h1>
+            <hr>
+            <div v-html="content"></div>
+            <hr>
+            <p>Kontain dalam plain text:</p>
+            <div v-text="content"></div>
+            <hr>
+            <p>Yang ini cuma dirender sekali:</p>
+            <div v-once>{{ content }}</div>
+            </p>
+        </div>
+
+        <!--VUE-->
+        <script>
+            var app = new Vue ({
+                el: "#app",
+                data: {
+                    title:"Tutorial Vuejs Pemula",
+                    content: "ini adalah tutorial vuejs dari nol"
+                }
+            })
+        </script>
+        </div>
+        
+    </body>
+</html>

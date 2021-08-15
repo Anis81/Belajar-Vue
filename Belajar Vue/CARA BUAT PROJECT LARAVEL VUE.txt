@@ -1,0 +1,44 @@
+--MEMBUAT DATABASE, TABEL DAN KONFIGURASI--
+1. Buka cmd tulis cd\xampp\mysql\bin -> mysql -uroot
+	sampai muncul maria db
+2. Buat DB dengan menuliskan
+	CREATE DATABASE nama_databse;
+	sampai muncul query ok
+3. Konfiguras tabel
+	Buka file .env lalu ubah nama DB sesuai dengan DB yg tadi dibuat
+	env=environment= variabel2 kita tdk bisa dilihat ada pasword jd harus di ignore saat di post di github
+4. Membuat table dengan menuliskan
+	php artisan make:model nama_tabel --migration
+	(fungsinya untuk menambahkan migration dan model baru. Migration berfungsi untuk mempermudah dan mempercepat pembuatan tabel)
+5. Membuat baris tabel
+	- buka file _create_namatabel_tabel.php (di dalam folder database->migration)
+	- menuliskan isi tabel sesuai kebutuhan
+6. Membuat extend model
+	- buka file namatabel.php (di dalam folder models)
+	- buat proteksi aga perintah hanya bisa diakses di dalam class:
+		class namatabel extends Model
+			{
+    				protected $table = "namatabel";
+    				protected $fillable = ['isi tabel'];
+			}
+7. Membuat tabel tadi agar bisa masuk ke dalam DB tuliskan
+	php artisan migrate
+
+--MEMBUAT HALAMAN VIEW APP--
+1. Membuat tampilan html pada file app.blade.php
+
+--MODIFIKASI ROUTE WEB DAN API--
+1. Menambah route pada routes/web.php
+	Route::get('/{any}', function () {
+    		return view('app');
+	});
+2. Menambah route API pada routes/api.php
+	Route::get('/fruits', 'fruitsController@index');
+	Route::post('/fruits/store', 'fruitsController@store');
+	Route::get('/fruits/edit/{id}', 'fruitsController@getfruits');
+	Route::get('/fruits/show/{id}', 'fruitsController@getfruits');
+	Route::put('/fruits/update/{id}', 'fruitsController@update');
+	Route::delete('/fruits/delete/{id}', 'fruitsController@delete'); 
+
+
+	
